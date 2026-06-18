@@ -1,3 +1,4 @@
+SET search_path TO test;
 -- 5. Películas sin ventas
 SELECT p.titulo
 FROM pelicula p
