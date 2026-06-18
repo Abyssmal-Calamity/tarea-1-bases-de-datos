@@ -1,3 +1,4 @@
+SET search_path TO test;
 -- 4. Recaudación por sala y día
 SELECT s.nombre, f.fecha, SUM(e.precio)
 FROM sala s
