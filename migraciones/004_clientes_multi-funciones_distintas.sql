@@ -1,3 +1,4 @@
+SET search_path TO test;
 -- 3. Clientes con 3 o más funciones distintas
 SELECT c.nombre
 FROM cliente c
