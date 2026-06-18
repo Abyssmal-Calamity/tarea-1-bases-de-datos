@@ -1,7 +1,7 @@
 SET search_path TO cine;
 
 CREATE OR REPLACE FUNCTION evitar_solapamiento()
-RETURNS TRIGGER AS $$
+RETURNS TRIGGER AS '
 BEGIN
     IF EXISTS (
         SELECT 1
@@ -10,14 +10,14 @@ BEGIN
         WHERE f.sala_id = NEW.sala_id
         AND f.fecha = NEW.fecha
         AND NEW.hora BETWEEN f.hora 
-        AND f.hora + (p.duracion_min || ' minutes')::interval
+        AND f.hora + (p.duracion_min || '' minutes'')::interval
     ) THEN
-        RAISE EXCEPTION 'Función solapada';
+        RAISE EXCEPTION ''Función solapada'';
     END IF;
 
     RETURN NEW;
 END;
-$$ LANGUAGE plpgsql;
+' LANGUAGE plpgsql;
 
 DROP TRIGGER IF EXISTS trg_solapamiento ON funcion;
 

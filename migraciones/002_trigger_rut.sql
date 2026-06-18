@@ -1,19 +1,19 @@
 SET search_path TO cine;
 
-CREATE OR REPLACE FUNCTION validar_rut()
-RETURNS TRIGGER AS $$
+CREATE OR REPLACE FUNCTION validar_rut() RETURNS TRIGGER AS '
 DECLARE
     rut_num TEXT;
 BEGIN
-    rut_num := regexp_replace(NEW.rut, '[^0-9kK]', '', 'g');
+    -- Se usan dos comillas simples para escapar el patrón y modificadores
+    rut_num := regexp_replace(NEW.rut, ''[^0-9kK]'', '''', ''g'');
 
     IF length(rut_num) < 2 THEN
-        RAISE EXCEPTION 'RUT inválido';
+        RAISE EXCEPTION ''RUT inválido'';
     END IF;
 
     RETURN NEW;
 END;
-$$ LANGUAGE plpgsql;
+' LANGUAGE plpgsql;
 
 DROP TRIGGER IF EXISTS trg_rut ON cliente;
 

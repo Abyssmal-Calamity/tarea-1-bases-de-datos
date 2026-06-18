@@ -1,7 +1,7 @@
 SET search_path TO cine;
 
 CREATE OR REPLACE FUNCTION evitar_sobreventa()
-RETURNS TRIGGER AS $$
+RETURNS TRIGGER AS '
 DECLARE
     total INT;
     cap INT;
@@ -16,12 +16,12 @@ BEGIN
     WHERE f.funcion_id = NEW.funcion_id;
 
     IF total >= cap THEN
-        RAISE EXCEPTION 'Sala llena';
+        RAISE EXCEPTION ''Sala llena'';
     END IF;
 
     RETURN NEW;
 END;
-$$ LANGUAGE plpgsql;
+' LANGUAGE plpgsql;
 
 DROP TRIGGER IF EXISTS trg_sobreventa ON entrada;
 
