@@ -1,3 +1,4 @@
+SET search_path TO test;
 -- 6. Horario peak
 SELECT f.hora, COUNT(e.entrada_id) AS total
 FROM funcion f
