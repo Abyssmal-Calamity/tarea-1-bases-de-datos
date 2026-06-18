@@ -1,3 +1,4 @@
+SET search_path TO test;
 -- 2. Función con mayor ocupación
 SELECT f.funcion_id,
 COUNT(e.entrada_id)*1.0 / s.capacidad AS ocupacion
