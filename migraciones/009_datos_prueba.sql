@@ -1,4 +1,4 @@
-SET search_path TO test;
+SET search_path TO cine;
 
 INSERT INTO pelicula (titulo, duracion_min) VALUES
 ('Avengers', 120),
@@ -34,6 +34,4 @@ INSERT INTO entrada (funcion_id, asiento_id, cliente_id, precio) VALUES
 (2,3,1,5000),
 (3,4,2,5000);
 
-INSERT INTO schema_migrations VALUES ('001_modelo_datos_prueba');
-
-
+INSERT INTO schema_migrations VALUES ('009_datos_prueba');

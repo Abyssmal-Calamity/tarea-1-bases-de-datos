@@ -1,5 +1,5 @@
-CREATE SCHEMA IF NOT EXISTS test;
-SET search_path TO test;
+CREATE SCHEMA IF NOT EXISTS cine;
+SET search_path TO cine;
 
 CREATE TABLE schema_migrations (
     version TEXT PRIMARY KEY,
